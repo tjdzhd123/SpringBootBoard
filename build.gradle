@@ -1,0 +1,52 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.11'
+	id 'io.spring.dependency-management' version '1.0.13.RELEASE'
+	id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2' //MyBatis로 MySQL연동
+	compileOnly 'org.projectlombok:lombok' //Java의 라이브러리로 반복되는 메소드를 Annotation을 사용해서 자동으로 작성해주는 라이브러리이다.
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'//spring boot 재시작없이 반영하기 위해
+	runtimeOnly 'mysql:mysql-connector-java'//MySQL과 연동
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // DB 쿼리 작성을 쉽게 하기 위함
+	implementation 'org.springframework.boot:spring-boot-starter-security' // 스프링 시큐리티
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf' // 타임리프로 쉽게 웹 화면 구성을 위함
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5' // 타임리프 화면에서 스프링 시큐리티 사용을 위함
+	implementation group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.3.4.RELEASE' // spring oauth 2.0
+	implementation 'org.apache.commons:commons-lang3:3.8' // 유틸리티 사용을 위함
+	implementation 'com.konghq:unirest-java:3.7.02' // http 통신을 쉽게 하기 위함
+	compileOnly 'org.projectlombok:lombok' // 변수 get, set 함수 편리하게 만들기 위함
+	annotationProcessor 'org.projectlombok:lombok'
+
+	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
